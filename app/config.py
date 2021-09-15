@@ -9,10 +9,9 @@ class Config:
     MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
     MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    MOVIE_POSTER_BASE_URL=''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:New Password@localhost/watchlist'
-
-
+    # MOVIE_POSTER_BASE_URL=''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:kenyan@localhost/watch'
+   
 class ProdConfig(Config):
     '''
     Production  configuration child class
