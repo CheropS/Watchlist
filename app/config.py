@@ -10,6 +10,7 @@ class Config:
     MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
     MOVIE_POSTER_BASE_URL=''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:New Password@localhost/watchlist'
 
 
 class ProdConfig(Config):
