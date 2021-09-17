@@ -11,6 +11,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     # MOVIE_POSTER_BASE_URL=''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:kenyan@localhost/watch'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
    
 class ProdConfig(Config):
     '''
