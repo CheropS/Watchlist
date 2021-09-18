@@ -5,7 +5,7 @@ from ..models import Review, User
 from .forms import ReviewForm, UpdateProfile
 from flask_login import login_required,current_user
 from .. import db, photos 
-
+import markdown2 
 # Views
 @main.route('/')
 
@@ -53,6 +53,13 @@ def search(movie_name):
 
 @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
 @login_required
+def single_review(id):
+    review=Review.query.get(id)
+    if review is None:
+        abort(404)
+    format_review = markdown2.markdown(review.movie_review,extras=["code-friendly", "fenced-code-blocks"])
+    return render_template('review.html',review = review,format_review=format_review)
+    
 def new_review(id):
     form = ReviewForm()
     movie = get_movie(id)
@@ -67,9 +74,10 @@ def new_review(id):
        #save review method
         new_review.save_review()
         return redirect(url_for('movie',id = movie.id ))
-
     title = f'{movie.title} review'
     return render_template('new_review.html',title = title, review_form=form, movie=movie)
+
+   
 
 @main.route('/user/<uname>')
 def profile(uname):
